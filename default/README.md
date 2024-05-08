@@ -70,6 +70,6 @@ npm run dev
 
 ## Documentation
 
-For more information, please refer to the [official documentation](https://astroneer.js.org/).
+For more information, please refer to the [official documentation](https://astroneer.dev/).
 
 Good luck! 🚀

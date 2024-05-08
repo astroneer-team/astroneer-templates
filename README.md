@@ -49,6 +49,12 @@ astroneer-app/
 ├── .gitignore
 ├── .prettierrc
 ├── package.json
-├── tsconfig.json
-└── README.md
+├── README.md
+└── tsconfig.json
 ```
+
+## Documentation
+
+For more information, please refer to the [official documentation](https://astroneer.dev/).
+
+Good luck! 🚀
