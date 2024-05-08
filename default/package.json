@@ -1,0 +1,26 @@
+{
+  "name": "default",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "astroneer build",
+    "dev": "astroneer dev",
+    "start": "astroneer start",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@astroneer/cli": "^1.0.3-alpha.0",
+    "@astroneer/common": "^1.0.1-alpha.0",
+    "@astroneer/core": "^1.0.3-alpha.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.11",
+    "@typescript-eslint/eslint-plugin": "^7.1.0",
+    "@typescript-eslint/parser": "^7.1.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5"
+  }
+}
