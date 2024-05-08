@@ -26,6 +26,14 @@ astroneer new astroneer-app
 
 This template includes the following dependencies:
 
+### Scripts
+
+- `build`: Builds the project.
+- `dev`: Starts the development server.
+- `start`: Starts the production server.
+- `lint`: Lints the project.
+- `format`: Formats the project.
+
 ### dependencies
 
 - `@astroneer/cli`: The CLI tool for Astroneer.js.

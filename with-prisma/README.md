@@ -26,11 +26,22 @@ astroneer new astroneer-app
 
 This template includes the following dependencies:
 
+### Scripts
+
+- `build`: Builds the project.
+- `dev`: Starts the development server.
+- `start`: Starts the production server.
+- `lint`: Lints the project.
+- `format`: Formats the project.
+- `postinstall`: Runs the `prisma generate` command after installing the dependencies.
+
 ### dependencies
 
 - `@astroneer/cli`: The CLI tool for Astroneer.js.
 - `@astroneer/common`: The common library of Astroneer.js.
 - `@astroneer/core`: The core library of Astroneer.js.
+- `@prisma/client`: Prisma Client is an auto-generated and type-safe query builder that's tailored to your database schema.
+- `zod`: A TypeScript-first schema declaration and validation library.
 
 ### devDependencies
 
@@ -40,6 +51,7 @@ This template includes the following dependencies:
 - `eslint`: The pluggable linting utility for JavaScript and JSX.
 - `eslint-config-prettier`: Turns off all rules that are unnecessary or might conflict with Prettier.
 - `prettier`: An opinionated code formatter.
+- `prisma`: Prisma helps app developers build faster and make fewer errors with an open-source ORM for PostgreSQL, MySQL and SQLite.
 - `typescript`: A superset of JavaScript that compiles to clean JavaScript output.
 
 ## Utilities

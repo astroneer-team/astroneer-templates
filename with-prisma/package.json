@@ -1,6 +1,6 @@
 {
-  "name": "default",
-  "version": "0.0.0",
+  "name": "with-prisma",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "build": "astroneer build",
