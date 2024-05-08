@@ -40,7 +40,7 @@ Some of the available templates are:
 The project structure of an Astroneer.js project is as follows:
 
 ```
-astroneer-app/
+my-astroneer-app/
 ├── src/
 │   ├── routes/
 │   │   └── hello.ts
