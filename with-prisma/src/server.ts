@@ -1,15 +1,11 @@
 import { logRequest } from '@astroneer/common';
 import { Astroneer } from '@astroneer/core';
-import { createServer, Server } from 'http';
+import { createServer } from 'http';
 import { parse } from 'url';
 
-export default async function server(
-  port: number,
-  host: string,
-  devmode: boolean,
-): Promise<Server> {
-  const app = new Astroneer();
-  const server = createServer(async (req, res) => {
+export default async function server(_: number, __: string, devmode: boolean) {
+  const app = await Astroneer.prepare();
+  return createServer(async (req, res) => {
     if (devmode) logRequest(req, res);
 
     try {
@@ -20,15 +16,4 @@ export default async function server(
       res.writeHead(500, { 'Content-Type': 'text/plain' });
     }
   });
-
-  server.once('error', (err) => {
-    console.error(err);
-    process.exit(1);
-  });
-
-  server.listen(port, host, () => {
-    console.log(`> Server listening on http://${host}:${port}`);
-  });
-
-  return server;
 }

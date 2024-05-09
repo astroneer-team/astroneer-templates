@@ -10,9 +10,9 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@astroneer/cli": "^1.0.3",
-    "@astroneer/common": "^1.0.3",
-    "@astroneer/core": "^1.0.3"
+    "@astroneer/cli": "^1.1.0",
+    "@astroneer/common": "^1.1.0",
+    "@astroneer/core": "^1.1.0"
   },
   "devDependencies": {
     "@types/node": "^20.12.11",
