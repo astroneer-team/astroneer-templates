@@ -2,7 +2,7 @@ import { Request, Response } from '@astroneer/core';
 import { z } from 'zod';
 import prisma from '../../client';
 
-export async function GET(_: Request, res: Response) {
+export async function GET(req: Request, res: Response) {
   const dogs = await prisma.dog.findMany();
   res.json(dogs);
 }
