@@ -6,6 +6,6 @@
     "strictNullChecks": true,
     "removeComments": true,
     "useUnknownInCatchVariables": false,
-    "types": ["node"]
+    "types": ["node", "jest"]
   }
 }
