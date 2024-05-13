@@ -14,7 +14,7 @@ export async function POST(req: Request, res: Response) {
     breed: z.string(),
   });
 
-  const { success, data, error } = schema.safeParse(req.body);
+  const { success, data, error } = schema.safeParse(await req.body());
 
   if (!success) {
     return res.status(400).json({ error });
