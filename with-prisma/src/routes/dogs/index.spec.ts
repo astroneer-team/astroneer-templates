@@ -21,7 +21,7 @@ describe('Dogs', () => {
   describe('POST()', () => {
     it('should validate request body', async () => {
       const req = {
-        body: {},
+        body: jest.fn(),
       } as unknown as Request;
       const res = {
         status: jest.fn().mockReturnThis(),
@@ -36,11 +36,11 @@ describe('Dogs', () => {
 
     it('should create a dog', async () => {
       const req = {
-        body: {
+        body: jest.fn().mockResolvedValue({
           name: 'Buddy',
           age: 5,
           breed: 'Golden Retriever',
-        },
+        }),
       } as unknown as Request;
       const res = {
         json: jest.fn(),
