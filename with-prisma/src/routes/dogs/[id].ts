@@ -1,12 +1,14 @@
-import { drizzle } from '@/database/drizzle';
-import { $dogs } from '@/database/schema/dogs.schema';
+import prisma from '@/database/prisma';
 import { dogValidator } from '@/validators/dog.validator';
 import { HttpError, Request, Response } from '@astroneer/core';
-import { sql } from 'drizzle-orm';
+import { Dog } from '@prisma/client';
 
 export async function GET(req: Request, res: Response) {
-  const dog = await drizzle.query.dogs.findFirst({
-    where: sql`${$dogs.id} = ${req.params.id}`,
+  const { id } = req.params;
+  const dog = await prisma.dog.findUnique({
+    where: {
+      id: Number(id),
+    },
   });
 
   if (!dog) {
@@ -17,11 +19,8 @@ export async function GET(req: Request, res: Response) {
 }
 
 export async function PUT(req: Request, res: Response) {
-  const { name, age, breed } = await req.body<{
-    name: string;
-    age: number;
-    breed: string;
-  }>();
+  const { id } = req.params;
+  const { name, age, breed } = await req.body<Dog>();
 
   const validation = dogValidator.safeParse({ name, age, breed });
 
@@ -29,15 +28,27 @@ export async function PUT(req: Request, res: Response) {
     throw new HttpError(400, 'Invalid dog data', validation.error);
   }
 
-  const dog = await drizzle
-    .update($dogs)
-    .set({ name, age, breed })
-    .where(sql`${$dogs.id} = ${req.params.id}`);
+  const dog = await prisma.dog.update({
+    where: {
+      id: Number(id),
+    },
+    data: {
+      name,
+      age,
+      breed,
+    },
+  });
 
   res.json(dog);
 }
 
 export async function DELETE(req: Request, res: Response) {
-  await drizzle.delete($dogs).where(sql`${$dogs.id} = ${req.params.id}`);
+  const { id } = req.params;
+  await prisma.dog.delete({
+    where: {
+      id: Number(id),
+    },
+  });
+
   res.status(204).send('Ok');
 }

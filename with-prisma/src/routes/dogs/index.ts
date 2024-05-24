@@ -1,19 +1,15 @@
-import { drizzle } from '@/database/drizzle';
-import { $dogs } from '@/database/schema/dogs.schema';
+import prisma from '@/database/prisma';
 import { dogValidator } from '@/validators/dog.validator';
 import { HttpError, Request, Response } from '@astroneer/core';
+import { Dog } from '@prisma/client';
 
 export async function GET(_: Request, res: Response) {
-  const dogs = await drizzle.select().from($dogs);
+  const dogs = await prisma.dog.findMany();
   res.json(dogs);
 }
 
 export async function POST(req: Request, res: Response) {
-  const { name, age, breed } = await req.body<{
-    name: string;
-    age: number;
-    breed: string;
-  }>();
+  const { name, age, breed } = await req.body<Dog>();
 
   const validation = dogValidator.safeParse({ name, age, breed });
 
@@ -21,10 +17,8 @@ export async function POST(req: Request, res: Response) {
     throw new HttpError(400, 'Invalid dog data', validation.error);
   }
 
-  const dog = await drizzle.insert($dogs).values({
-    name,
-    age,
-    breed,
+  const dog = await prisma.dog.create({
+    data: validation.data,
   });
 
   res.status(201).json(dog);
