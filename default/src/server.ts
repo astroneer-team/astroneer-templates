@@ -7,15 +7,9 @@ export default async function startServer(): Promise<Server> {
   const port = process.env.PORT || 3000;
   const hostname = process.env.HOST || 'localhost';
   const app = await Astroneer.prepare();
-  const server = createServer(async (req, res) => {
-    try {
-      const parsedUrl = parse(req.url || '', true);
-      await app.handle(req, res, parsedUrl);
-    } catch (err) {
-      console.error(err);
-      res.statusCode = 500;
-      res.end('Internal Server Error');
-    }
+  const server = createServer((req, res) => {
+    const parsedUrl = parse(req.url || '', true);
+    app.handle(req, res, parsedUrl);
   });
 
   server.once('error', (err) => {

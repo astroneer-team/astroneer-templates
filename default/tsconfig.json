@@ -1,11 +1,16 @@
 {
   "compilerOptions": {
     "module": "commonjs",
+    "target": "ESNext",
     "esModuleInterop": true,
     "strict": true,
     "strictNullChecks": true,
     "removeComments": true,
     "useUnknownInCatchVariables": false,
-    "types": ["node", "jest"]
+    "types": ["node", "jest"],
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   }
 }
