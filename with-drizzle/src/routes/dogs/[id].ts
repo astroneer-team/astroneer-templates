@@ -4,10 +4,9 @@ import { Request, Response } from '@astroneer/core';
 import { sql } from 'drizzle-orm';
 
 export async function GET(req: Request, res: Response) {
-  const dog = await drizzle
-    .select()
-    .from($dogs)
-    .where(sql`${$dogs.id} = ${req.params.id}`);
+  const dog = await drizzle.query.dogs.findFirst({
+    where: sql`${$dogs.id} = ${req.params.id}`,
+  });
 
   if (!dog) {
     return res.status(404).json({ message: 'Dog not found' });
@@ -33,4 +32,16 @@ export async function PUT(req: Request, res: Response) {
   }
 
   res.json(dog);
+}
+
+export async function DELETE(req: Request, res: Response) {
+  const dog = await drizzle
+    .delete($dogs)
+    .where(sql`${$dogs.id} = ${req.params.id}`);
+
+  if (!dog) {
+    return res.status(404).json({ message: 'Dog not found' });
+  }
+
+  res.json({ message: 'Dog deleted successfully!' });
 }

@@ -6,6 +6,7 @@
 import { Logger } from '@astroneer/common';
 import { drizzle as drizzleORM } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
+import { $dogs } from './schema/dogs.schema';
 
 const queryClient = postgres({
   // Please replace the following with your database connection string or use the environment variable
@@ -18,5 +19,8 @@ export const drizzle = drizzleORM(queryClient, {
       process.env.NODE_ENV === 'development' &&
         Logger.debug(`${query} ${JSON.stringify(params, null, 2)}`);
     },
+  },
+  schema: {
+    dogs: $dogs,
   },
 });
