@@ -12,9 +12,9 @@
     "test:e2e": "jest --config ./e2e/jest.config.js"
   },
   "dependencies": {
-    "@astroneer/cli": "^1.4.0",
+    "@astroneer/cli": "^1.4.5",
     "@astroneer/common": "^1.4.0",
-    "@astroneer/core": "^1.4.0"
+    "@astroneer/core": "^1.4.5"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
