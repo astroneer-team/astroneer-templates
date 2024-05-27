@@ -1,14 +1,15 @@
 import { drizzle } from '@/database/drizzle';
 import { $dogs } from '@/database/schema/dogs.schema';
 import { dogValidator } from '@/validators/dog.validator';
-import { HttpError, Request, Response } from '@astroneer/core';
+import { HttpError } from '@astroneer/common';
+import { Request, Response, RouteHandler } from '@astroneer/core';
 
-export async function GET(_: Request, res: Response) {
+export const GET: RouteHandler = async (_, res) => {
   const dogs = await drizzle.select().from($dogs);
   res.json(dogs);
-}
+};
 
-export async function POST(req: Request, res: Response) {
+export const POST: RouteHandler = async (req, res) => {
   const { name, age, breed } = await req.body<{
     name: string;
     age: number;
@@ -28,4 +29,4 @@ export async function POST(req: Request, res: Response) {
   });
 
   res.status(201).json(dog);
-}
+};

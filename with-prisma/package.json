@@ -13,9 +13,9 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
-    "@astroneer/cli": "^1.4.8",
-    "@astroneer/common": "^1.4.8",
-    "@astroneer/core": "^1.4.8",
+    "@astroneer/cli": "^1.4.18",
+    "@astroneer/common": "^1.4.18",
+    "@astroneer/core": "^1.4.18",
     "@prisma/client": "^5.14.0",
     "zod": "^3.23.8"
   },

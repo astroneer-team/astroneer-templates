@@ -1,4 +1,4 @@
-import { Request, Response } from '@astroneer/core';
+import { RouteHandler } from '@astroneer/core';
 
 /**
  * In Astroneer, you can define your routes in separate files.
@@ -9,6 +9,6 @@ import { Request, Response } from '@astroneer/core';
  * You can also export a middlewares array to apply middleware to the route.
  * Please refer to the https://astroneer.dev/docs/route-handlers#middlewares documentation for more information.
  */
-export function GET(_: Request, res: Response) {
+export const GET: RouteHandler = async (_, res) => {
   res.send('Hello, from Astroneer! 🚀');
-}
+};

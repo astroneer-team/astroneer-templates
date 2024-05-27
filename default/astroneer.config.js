@@ -8,6 +8,10 @@
  *
  * If you need to change the default compiler (ESBuild) to another one, keep in mind that you'll loose the bundle optimization feature.
  */
-const { defineConfig } = require('@astroneer/core');
+const { defineConfig } = require('@astroneer/config');
 
-module.exports = defineConfig({});
+module.exports = defineConfig({
+  compiler: {
+    type: 'swc',
+  },
+});

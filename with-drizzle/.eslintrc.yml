@@ -1,22 +1,21 @@
 root: true
 env:
   node: true
-  jest: true
-extends:
-  - "eslint:recommended"
-  - "prettier"
 parserOptions:
   ecmaVersion: latest
   sourceType: module
 overrides:
   - files: "*.ts"
     parser: "@typescript-eslint/parser"
-    extends:
-      - "plugin:@typescript-eslint/recommended"
-    plugins:
-      - "@typescript-eslint"
-      - "drizzle"
     parserOptions:
       project: "./tsconfig.json"
-      ecmaVersion: latest
-      sourceType: module
+    plugins:
+      - "@typescript-eslint"
+      - "prettier"
+      - "astroneer"
+      - "drizzle"
+    extends:
+      - "plugin:@typescript-eslint/recommended"
+      - "plugin:prettier/recommended"
+      - "plugin:astroneer/recommended"
+      - "plugin:drizzle/recommended"

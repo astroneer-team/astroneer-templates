@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json.schemastore.org/swcrc",
+  "jsc": {
+    "baseUrl": ".",
+    "parser": {
+      "syntax": "typescript"
+    },
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "target": "es2021"
+  },
+  "module": {
+    "type": "commonjs"
+  }
+}

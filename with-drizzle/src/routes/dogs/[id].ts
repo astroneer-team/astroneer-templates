@@ -1,10 +1,11 @@
 import { drizzle } from '@/database/drizzle';
 import { $dogs } from '@/database/schema/dogs.schema';
 import { dogValidator } from '@/validators/dog.validator';
-import { HttpError, Request, Response } from '@astroneer/core';
+import { HttpError } from '@astroneer/common';
+import { RouteHandler } from '@astroneer/core';
 import { sql } from 'drizzle-orm';
 
-export async function GET(req: Request, res: Response) {
+export const GET: RouteHandler = async (req, res) => {
   const dog = await drizzle.query.dogs.findFirst({
     where: sql`${$dogs.id} = ${req.params.id}`,
   });
@@ -14,9 +15,9 @@ export async function GET(req: Request, res: Response) {
   }
 
   res.json(dog);
-}
+};
 
-export async function PUT(req: Request, res: Response) {
+export const PUT: RouteHandler = async (req, res) => {
   const { name, age, breed } = await req.body<{
     name: string;
     age: number;
@@ -35,9 +36,9 @@ export async function PUT(req: Request, res: Response) {
     .where(sql`${$dogs.id} = ${req.params.id}`);
 
   res.json(dog);
-}
+};
 
-export async function DELETE(req: Request, res: Response) {
+export const DELETE: RouteHandler = async (req, res) => {
   await drizzle.delete($dogs).where(sql`${$dogs.id} = ${req.params.id}`);
   res.status(204).send('Ok');
-}
+};

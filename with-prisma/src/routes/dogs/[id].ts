@@ -1,9 +1,10 @@
 import prisma from '@/database/prisma';
 import { dogValidator } from '@/validators/dog.validator';
-import { HttpError, Request, Response } from '@astroneer/core';
+import { HttpError } from '@astroneer/common';
+import { Request, Response, RouteHandler } from '@astroneer/core';
 import { Dog } from '@prisma/client';
 
-export async function GET(req: Request, res: Response) {
+export const GET: RouteHandler = async (req, res) => {
   const { id } = req.params;
   const dog = await prisma.dog.findUnique({
     where: {
@@ -16,9 +17,9 @@ export async function GET(req: Request, res: Response) {
   }
 
   res.json(dog);
-}
+};
 
-export async function PUT(req: Request, res: Response) {
+export const PUT: RouteHandler = async (req, res) => {
   const { id } = req.params;
   const { name, age, breed } = await req.body<Dog>();
 
@@ -40,9 +41,9 @@ export async function PUT(req: Request, res: Response) {
   });
 
   res.json(dog);
-}
+};
 
-export async function DELETE(req: Request, res: Response) {
+export const DELETE: RouteHandler = async (req, res) => {
   const { id } = req.params;
   await prisma.dog.delete({
     where: {
@@ -51,4 +52,4 @@ export async function DELETE(req: Request, res: Response) {
   });
 
   res.status(204).send('Ok');
-}
+};
